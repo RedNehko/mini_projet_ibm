@@ -4,15 +4,17 @@
       <a href="" class="navbar-brand" routerLink="/">{{title}}</a>
       <ul class="nav navbar-nav">
         <li>
-          <a href="">Home</a>
+          <a href="" routerLink="/">Home</a>
         </li>
         <li>
-          <a href="">Ajouter un(e) film/série</a>
+          <a href="" routerLink="/add_serie_film">Ajouter un(e) film/série</a>
         </li>
         <li>
-          <a href="">Avis</a>
+          <a href="" routerLink="/serie_film/add">Avis</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<router-outlet></router-outlet>
