@@ -1,0 +1,11 @@
+.status_good {
+    color:#00b894;
+    font-weight: bold;
+}
+.status_bad {
+    color:#d63031;
+    font-weight: bold;
+}
+.inline {
+    display: inline-block;
+}
