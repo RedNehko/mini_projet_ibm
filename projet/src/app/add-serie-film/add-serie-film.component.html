@@ -1,3 +1,20 @@
-<p>
-  add-serie-film works!
-</p>
+<h1>Ajout d'une série ou d'un film</h1>
+
+<div class="panel-body">
+  <form autocomplete="off" [formGroup]="form" (ngSubmit)="createSF()">
+    <div class="form-group col-sm-12">
+      <label for="title">Titre</label>
+        <input type="text" name="title" class="form-control" placeholder="Titre du film ou de la série" formControlName="title" />
+      <label for="type">Type</label>
+        <select class="form-control" name="type" formControlName="type">
+          <option *ngFor="let tp of typeSF" [value]="tp.value">{{tp.name}}</option>
+        </select>
+      <label for="title">Description</label>
+        <textarea name="description" placeholder="Description" rows="7" class="form-control" formControlName="description"></textarea>
+      <label for="title">Votre pseudo</label>
+        <input type="text" name="addBy" class="form-control" placeholder="Votre pseudo" formControlName="addBy" />
+      <br />
+      <button type="submit" class="btn btn-success">Ajouter</button>
+    </div>
+  </form>
+</div>
