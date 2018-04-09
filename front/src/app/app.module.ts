@@ -17,7 +17,8 @@ var routes = [
   {path: 'serie_film', component: SerieFilmComponent},
   {path: 'serie_film/add', component: AddAvisComponent},
   {path: 'serie_film/:id', component: AddAvisComponent},
-  {path: 'add_serie_film', component: AddSerieFilmComponent}
+  {path: 'add_serie_film', component: AddSerieFilmComponent},
+  {path: 'test', component: SerieFilmComponent}
 ];
 
 @NgModule({

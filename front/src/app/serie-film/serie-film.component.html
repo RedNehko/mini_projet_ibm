@@ -1,3 +1,18 @@
-<p>
-  serie-film works!
-</p>
+<div class="container">
+  <h1>Book List</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mv of movies">
+        <td>{{ mv.titre }}</td>
+        <td>Show Detail</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

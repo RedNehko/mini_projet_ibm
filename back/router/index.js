@@ -14,7 +14,11 @@ module.exports = function (app) {
     })
 
     app.get('/getMovies', (req, res, next) => {
-        let tabMovies= ['a','b'];
+        //let tabMovies= ['a','b'];
+        let tabMovies = [
+            {titre: 'a'},
+            {titre: 'b'}
+        ];
         res.status(200).send(tabMovies);
     })
 }
