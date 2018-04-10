@@ -13,49 +13,66 @@ db.once('open', () => {
     console.log('Connecté à la BDD :)');
 });
 
-app.use(express.static('http://localhost:4200/add_serie_film'));//on envoie vers le lien
+app.use(express.static('/add_serie_film'));//on envoie vers le lien
 
 // structure du schéma
 var sfSchema = mongoose.Schema({
-  sftitle: String,
-  sftype: String,
-  sfdescription: String,
-  sfaddBy: String,
-  sfaddDate: Date
+    sftitle: String,
+    sftype: String,
+    sfdescription: String,
+    sfaddBy: String,
+    sfaddDate: Date
 });
 var serieFilm = mongoose.model('Serie', sfSchema);
 
+
+/*var date = new Date();
+var title = "Iron man";
+var type = "film";
+var description = "génial";
+var addBy = "Maxime";
+
+const mySerie = new serieFilm({sftitle: title, sftype: type, sfdescription: description, sfaddBy: addBy, sfaddDate: date});
+mySerie.save((err, savedSerie) => {
+    if(err){
+        console.err(err);
+    }else{
+        console.log('savedSerie', savedSerie);
+    }
+});*/
+
+
 // envoie de la nouvelle entrée
-app.post('/http://localhost:4200/add_serie_film', (req, res) => {
-  if(!req.body){
-      return res.sendStatus(500);
-  }else{
-      // definie la date
-      var date = new Date();
-      var formData = req.body;
-      var title = req.body.title;
-      var type = req.body.type;
-      var description = req.body.description;
-      var addBy = req.body.addBy;
-      var mySerie = new Serie({sftitle: title, sftype: type, sfdescription: description, sfaddBy: addBy, sfaddDate: date});
-      mySerie.save((err, savedSerie) => {
-          if(err){
-              console.error(err);
-              return;
-          }else{
-              console.log(savedSerie);
-              //res.sendStatus(201);
-              res.status(201).send('La/Le serie/film a été ajouté(e) avec succès !');
-          }
-      });
-  }
+app.post('/add_serie_film', (req, res) => {
+    if (!req.body) {
+        return res.sendStatus(500);
+    } else {
+        // definie la date
+        var date = new Date();
+        var formData = req.body;
+        var title = req.body.title;
+        var type = req.body.type;
+        var description = req.body.description;
+        var addBy = req.body.addBy;
+        var mySerie = new serieFilm({ sftitle: title, sftype: type, sfdescription: description, sfaddBy: addBy, sfaddDate: date });
+        mySerie.save((err, savedSerie) => {
+            if (err) {
+                console.error(err);
+                return;
+            } else {
+                console.log(savedSerie);
+                //res.sendStatus(201);
+                res.status(201).send('La/Le serie/film a été ajouté(e) avec succès !');
+            }
+        });
+    }
 });
 
 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: true
+    extended: true
 }));
 
 app.options('*', cors());
@@ -68,5 +85,5 @@ var appEnv = cfenv.getAppEnv();
 
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function () {
-  console.log("server starting on " + appEnv.url);
+    console.log("server starting on " + appEnv.url);
 });
