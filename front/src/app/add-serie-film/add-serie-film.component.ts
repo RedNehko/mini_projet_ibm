@@ -24,6 +24,7 @@ export class AddSerieFilmComponent implements OnInit {
       title: '',
       type: '',
       description: '',
+      avis: '',
       addBy: '',
       addDate: new Date()
     });

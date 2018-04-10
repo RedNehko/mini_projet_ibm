@@ -20,6 +20,7 @@ var sfSchema = mongoose.Schema({
     sftitle: String,
     sftype: String,
     sfdescription: String,
+    sfavis: String,
     sfaddBy: String,
     sfaddDate: Date
 });
@@ -64,8 +65,9 @@ app.post('/add_serie_film', (req, res) => {
         var title = req.body.title;
         var type = req.body.type;
         var description = req.body.description;
+        var avis = req.body.avis;
         var addBy = req.body.addBy;
-        var mySerie = new serieFilm({ sftitle: title, sftype: type, sfdescription: description, sfaddBy: addBy, sfaddDate: date });
+        var mySerie = new serieFilm({ sftitle: title, sftype: type, sfdescription: description, sfavis: avis, sfaddBy: addBy, sfaddDate: date });
         mySerie.save((err, savedSerie) => {
             if (err) {
                 console.error(err);
