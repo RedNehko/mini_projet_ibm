@@ -15,8 +15,7 @@ import { AddSerieFilmComponent } from './add-serie-film/add-serie-film.component
 var routes = [
   {path: '', component: HomeComponent},
   {path: 'serie_film', component: SerieFilmComponent},
-  {path: 'serie_film/add', component: AddAvisComponent},
-  {path: 'serie_film/:id', component: AddAvisComponent},
+  {path: 'avis', component: AddAvisComponent},
   {path: 'add_serie_film', component: AddSerieFilmComponent},
 ];
 

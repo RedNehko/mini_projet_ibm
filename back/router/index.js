@@ -18,11 +18,11 @@ module.exports = function (app) {
     //     res.status(200).send('izi')
     // })
 
-    app.get('/getMovies', (req, res, next) => {
+    app.get('/avis', (req, res, next) => {
         //let tabMovies= ['a','b'];
         let tabMovies = [
-            { titre: 'a' },
-            { titre: 'b' }
+            { titre: 'a', type: 'serie' },
+            { titre: 'b', type: 'film' }
         ];
         res.status(200).send(tabMovies);
     })
