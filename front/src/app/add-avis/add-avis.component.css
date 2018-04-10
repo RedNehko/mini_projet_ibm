@@ -1,0 +1,8 @@
+.mid_width {
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+}
+.center_left {
+    text-align: left;
+}
