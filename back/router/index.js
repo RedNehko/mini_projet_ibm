@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 var mongoose = require('mongoose'); // pour la bdd
+const {db} = require('../env/dev');
 
 module.exports = function (app) {
 
@@ -22,15 +23,19 @@ module.exports = function (app) {
 
     app.get('/avis', (req, res, next) => {
         //let tabMovies= ['a','b'];
-        let tabMovies = [
+        /*let tabMovies = [
             { titre: 'a', type: 'serie' },
             { titre: 'b', type: 'film' }
         ];
-        res.status(200).send(tabMovies);
+        res.status(200).send(tabMovies);*/
+        serieFilm.find({}, function (err, result) {
+            let tabSF = result;
+            res.status(200).send(tabSF);
+        });
     })
 
 
-    mongoose.connect('mongodb://maxime:progtr00@ds237489.mlab.com:37489/mini_projet');
+    mongoose.connect(db);
     var db = mongoose.connection;
     db.on('error', console.error.bind(console, 'Erreur de connexion : Impossible de se connecter à la BDD'));
     db.once('open', () => {
@@ -38,14 +43,13 @@ module.exports = function (app) {
     });
 
 
-    //db.series.find({sftitre: titre});
-    db.collection("series").findOne({}, function(err, result) {
+    /*serieFilm.findOne({}, function (err, result) {
         if (err) throw err;
-            console.log(result.sftitle);
-        db.close();
-    });
-    db.collection("series").find({type: 'film'}, function(err, result){
         console.log(result.sftitle);
+        db.close();
+    });*/
+    serieFilm.find({ sftype: 'film' }, function (err, result) {
+        console.log(result);
     });
 
 

@@ -5,10 +5,14 @@
     <h3>Avis sur les séries</h3>
 
     <div *ngFor="let mv of movies">
-      <div class="panel panel-primary center_left" *ngIf="mv.type === 'serie'">
-        <div class="panel-heading">{{mv.titre}}</div>
+      <div class="panel panel-primary center_left" *ngIf="mv.sftype === 'serie'">
+        <div class="panel-heading">{{mv.sftitle}}</div>
         <div class="panel-body">
-          lkfdsjglkfdhglkfdhgkjfd
+          <p>{{mv.sfdescription}}</p>
+          <p>
+            <b>Avis de {{mv.sfaddBy}} :</b><br />
+            <i>"{{mv.sfavis}}"</i>
+          </p>
         </div>
       </div>
     </div>
@@ -20,13 +24,17 @@
     <h3>Avis sur les films</h3>
 
     <div *ngFor="let mv of movies">
-        <div class="panel panel-info center_left" *ngIf="mv.type === 'film'">
-          <div class="panel-heading">{{mv.titre}}</div>
+      <div class="panel panel-info center_left" *ngIf="mv.sftype === 'film'">
+          <div class="panel-heading">{{mv.sftitle}}</div>
           <div class="panel-body">
-            lkfdsjglkfdhglkfdhgkjfd
+            <p>{{mv.sfdescription}}</p>
+            <p>
+              <b>Avis de {{mv.sfaddBy}} :</b><br />
+              <i>"{{mv.sfavis}}"</i>
+            </p>
           </div>
         </div>
-      </div>
+    </div>
 
   </div>
 

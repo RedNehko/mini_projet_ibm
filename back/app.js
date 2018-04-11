@@ -4,12 +4,13 @@ var app = express();
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var router = express.Router();
+const {db} = require('./env/dev')
 
 // on se connecte à la bdd mlab
-mongoose.connect('mongodb://maxime:progtr00@ds237489.mlab.com:37489/mini_projet');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Erreur de connexion : Impossible de se connecter à la BDD'));
-db.once('open', () => {
+mongoose.connect(db);
+var DBConnection = mongoose.connection;
+DBConnection.on('error', console.error.bind(console, 'Erreur de connexion : Impossible de se connecter à la BDD'));
+DBConnection.once('open', () => {
     console.log('Connecté à la BDD :)');
 });
 
@@ -24,7 +25,7 @@ var sfSchema = mongoose.Schema({
     sfaddBy: String,
     sfaddDate: Date
 });
-var serieFilm = mongoose.model('Serie', sfSchema);
+global.serieFilm = mongoose.model('Serie', sfSchema);
 
 
 /*var date = new Date();
