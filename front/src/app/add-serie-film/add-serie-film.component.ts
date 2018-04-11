@@ -34,6 +34,7 @@ export class AddSerieFilmComponent implements OnInit {
     console.log(this.form);
     this.http.post('http://localhost:6001/add_serie_film', this.form.value).subscribe();
     this.form.reset();
+    alert("Votre contenu a été envoyé avec succès !");
   }
 
 }
